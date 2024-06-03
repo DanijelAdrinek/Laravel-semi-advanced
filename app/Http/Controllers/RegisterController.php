@@ -4,10 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Facades\Hash;
 
-class RegisterController extends Controller
+class RegisterController extends Controller implements HasMiddleware
 {
+    public static function middleware(): array {
+        return [
+            'guest'
+        ];
+    }
+
     public function index() {
         return view('auth.register');
     }

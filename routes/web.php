@@ -6,6 +6,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 
+// USING MIDDLEWARE
+// ->middleware('auth') at the end of route, or add it to a controller (ex. DashboardController)
+
 // DASHBOARD
 // we use ->name to help us when using {{ route('register) }} helper in view files
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
