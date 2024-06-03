@@ -4,9 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 
-class PostController extends Controller
+class PostController extends Controller implements HasMiddleware
 {
+
+    public static function middleware(): array {
+        return [
+            'auth'
+        ];
+    }
+
     public function index() {
         $posts = Post::paginate(20);
 

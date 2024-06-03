@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostLikeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
@@ -32,3 +33,7 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 // POSTS
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::post('/posts', [PostController::class, 'store']);
+
+// LIKES
+Route::post('/posts/{post}/like', [PostLikeController::class, 'store'])->name('post.likes');
+Route::delete('/posts/{post}/like', [PostLikeController::class, 'destroy'])->name('post.likes');
