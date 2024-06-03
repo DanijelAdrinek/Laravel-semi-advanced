@@ -28,6 +28,8 @@ class RegisterController extends Controller
 
         ]);
 
-        return view('posts.index');
+        auth()->attempt($request->only('email', 'password'));
+
+        return redirect()->route('dashboard');
     }
 }
